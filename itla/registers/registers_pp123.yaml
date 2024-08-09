@@ -1,0 +1,73 @@
+# https://purephotonics.com/wp-content/uploads/Feature-Guide-PPCL100-PPCL200-PPCL300-vD.pdf
+# -----------------------------------------------------------------------
+
+MODE:
+  register: 0x90
+  fnname: mode
+  description: >
+    Select low-noise mode:
+    0: Standard operation.
+    1: No-dither operation.
+    2: Whisper-mode operation.
+  readonly: false
+  AEA: false
+  signed: false
+
+CJTHZ:
+  register: 0xEA
+  fnname: cjthz
+  description: >
+    Clean jump target frequency; THz portion.
+    ie. To set 195.3452THz write 195 to 0xEA and 3452 to 0xEB.
+  readonly: false
+  AEA: false
+  signed: false
+
+CJGHZ:
+  register: 0xEB
+  fnname: cjghz
+  description: >
+    Clean jump target frequency; 0.1GHz portion.
+    ie. To set 195.3452THz write 195 to 0xEA and 3452 to 0xEB.
+  readonly: false
+  AEA: false
+  signed: false
+
+CJSLED:
+  register: 0xEC
+  fnname: cjsled
+  description: >
+    Clean jump target temperature for the laser in 0.01C.
+  readonly: false
+  AEA: false
+  signed: false
+
+CJCURRENT:
+  register: 0xE9
+  fnname: cjcurrent
+  description: >
+    load the target current for the next frequency with data in units of 0.1mA
+  readonly: false
+  AEA: false
+  signed: false
+
+CJSTART:
+  register: 0xED
+  fnname: cjstart
+  description: >
+    Execute the clean jump.
+    This is a WRITE ONLY function.
+    1: start (performs the jump)
+  readonly: false
+  AEA: false
+  signed: false
+
+CJOFFSET:
+  register: 0xE6
+  fnname: cjoffset
+  description: >
+    Provide the offset during the clean sweep in unity of 0.1GHz with an offset of 100GHZ.
+    Calculate the offset as (readout - 10000) * 0.1 GHz.
+  readonly: true
+  AEA: false
+  signed: true
